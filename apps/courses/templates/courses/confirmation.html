@@ -1,0 +1,17 @@
+<html>
+	<head>Deletion Confirmation</head>
+	<body>
+		
+		<h2>Are you sure you want to delete {{course.course_name}} ?</h2>
+		<form action='/delete/{{course.id}}' method="post">
+			{% csrf_token %}
+			<input type='hidden' name='name' value='yes'>
+			<input type='submit' value='Yes'>
+		</form>
+		<form action='/delete/{{course.id}}' method='post'>
+			{% csrf_token %}	
+			<input type='hidden' name='name' value='no'>
+			<input type='submit' value='No'>
+		</form>
+	</body>
+</html>

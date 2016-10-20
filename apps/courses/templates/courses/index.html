@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Courses Assignment</title>
+	</head>
+	<body>
+		<div id=wrapper>
+			<p>hello</p>
+			<form action='/add' method="post">
+				{% csrf_token %} 
+				<h3>Add a New Course</h3>
+			<label for="name">Name:</label>
+			<input type="text" name='name'><br>
+			<label for="description">Description:</label>
+			<textarea name='description' rows=7 cols=35></textarea><br>
+			<input type='submit' value='Add'>
+			</form>
+			
+			<table>
+				<thead>Courses</thead>
+				<tbody>	
+					<tr>
+					<th>  Course Name  </th>
+					<th>  Description  </th>
+					<th>  Date Added  </th>
+					<th>  Actions  </th>
+					</tr>
+					{% for i in course %}
+					<tr>  
+					<td>{{i.course_name}}</td> 
+					<td>{{i.description}}</td>
+					<td>{{i.created_at}}</td>
+					<td><a href='/confdel/{{i.id}}'>Delete</a></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			
+		</div>
+	</body>
+</html>
